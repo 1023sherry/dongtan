@@ -123,18 +123,18 @@ const Trip = React.memo((props) => {
   }, [animation, animate]);
 
   const layers  = [
-    // new PathLayer({  
-    //   id: 'lines',
-    //   data: line,
-    //   getPath: d => d.line,
-    //   getColor: d => d.color,
-    //   opacity: 0.01,
-    //   widthMinPixels: 1,
-    //   widthScale: 1,
-    //   pickable: true,  
-    //   rounded: true,
-    //   shadowEnabled: false
-    // }),
+    new PathLayer({  
+      id: 'lines',
+      data: line,
+      getPath: d => d.line,
+      getColor: d => d.color,
+      opacity: 0.01,
+      widthMinPixels: 1,
+      widthScale: 1,
+      pickable: true,  
+      rounded: true,
+      shadowEnabled: false
+    }),
     
     new ScatterplotLayer({
       id: "icon",
@@ -146,7 +146,7 @@ const Trip = React.memo((props) => {
       pickable: false,
       radiusMinPixels: 4,
     
-      
+
       radiusMaxPixels: 5,
     }),
 

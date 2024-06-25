@@ -34,10 +34,9 @@ const App = () => {
       fetchData("icon"),
     ]);
 
-    // const LINE = await Promise.all([
-    //   fetchData("line"),
-    //   fetchData("trail_line"),
-    // ]);
+    const LINE = await Promise.all([
+      fetchData("line"),
+    ]);
 
     // const TRAIL = await fetchData("trail");
 
@@ -59,7 +58,7 @@ const App = () => {
         <Trip 
               // trip={trip}
               icon={icon}
-              // line={line}
+              line={line}
               />
       )}
     </div>
