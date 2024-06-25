@@ -43,7 +43,7 @@ const App = () => {
 
     // setTrip((prev) => TRIP.flat()); 
     setIcon((prev) => ICON.flat());
-    // setLine((prev) => LINE.flat());
+    setLine((prev) => LINE.flat());
     setIsLoaded(true);
   }, []);
 

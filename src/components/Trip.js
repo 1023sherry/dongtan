@@ -126,11 +126,11 @@ const Trip = React.memo((props) => {
     new PathLayer({  
       id: 'lines',
       data: line,
-      getPath: d => d.line,
+      getPath: d => d.lines,
       getColor: d => d.color,
-      opacity: 0.01,
-      widthMinPixels: 1,
-      widthScale: 1,
+      opacity: 1,
+      widthMinPixels: 3,
+      widthScale: 3,
       pickable: true,  
       rounded: true,
       shadowEnabled: false
@@ -144,10 +144,8 @@ const Trip = React.memo((props) => {
       getRadius: (d) => 1,
       opacity: 0.1,
       pickable: false,
-      radiusMinPixels: 4,
-    
-
-      radiusMaxPixels: 5,
+      radiusMinPixels: 3,
+      radiusMaxPixels: 4,
     }),
 
   ];
