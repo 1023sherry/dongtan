@@ -112,13 +112,6 @@ const Trip = React.memo((props) => {
   const icon = props.icon;
   const line = props.line;
 
-  const [filteredTrip, setFilteredTrip] = useState([]);
-
-  useEffect(() => {
-    const filteredTrip = currData(props.trip, time);
-    setFilteredTrip(filteredTrip);
-  }, [props.trip, time]);
-
   const animate = useCallback(() => {
     setTime(returnAnimationTime);
     animation.id = window.requestAnimationFrame(animate);
@@ -129,19 +122,20 @@ const Trip = React.memo((props) => {
     return () => window.cancelAnimationFrame(animation.id);
   }, [animation, animate]);
 
-  const layers = useMemo(() => [
-    new PathLayer({  
-      id: 'lines',
-      data: line,
-      getPath: d => d.line,
-      getColor: d => d.color,
-      opacity: 0.01,
-      widthMinPixels: 1,
-      widthScale: 1,
-      pickable: true,  
-      rounded: true,
-      shadowEnabled: false
-    }),
+  const layers  = [
+    // new PathLayer({  
+    //   id: 'lines',
+    //   data: line,
+    //   getPath: d => d.line,
+    //   getColor: d => d.color,
+    //   opacity: 0.01,
+    //   widthMinPixels: 1,
+    //   widthScale: 1,
+    //   pickable: true,  
+    //   rounded: true,
+    //   shadowEnabled: false
+    // }),
+    
     new ScatterplotLayer({
       id: "icon",
       data: icon,
@@ -150,24 +144,13 @@ const Trip = React.memo((props) => {
       getRadius: (d) => 1,
       opacity: 0.1,
       pickable: false,
-      radiusMinPixels: 1,
-      radiusMaxPixels: 2,
+      radiusMinPixels: 4,
+    
+      
+      radiusMaxPixels: 5,
     }),
-    new TripsLayer({  
-      id: 'trips',
-      data: filteredTrip,
-      getPath: d => d.route,
-      getTimestamps: d => d.timestamp,
-      getColor: d => d.color,
-      opacity: 1,
-      widthMinPixels: 5,
-      rounded: true,
-      fadeTrail: true,
-      trailLength : 0.2,
-      currentTime: time,
-      shadowEnabled: false
-    }),
-  ], [filteredTrip, icon, time, line]);
+
+  ];
   
   const SliderChange = (value) => {
     const time = value.target.value;

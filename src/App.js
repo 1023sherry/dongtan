@@ -8,7 +8,7 @@ import "./css/app.css";
 
 const fetchData = async (FilE_NAME) => {
   const res = await axios.get(
-    `https://raw.githubusercontent.com/1023sherry/dongtan/main/dongtan/src/data/${FilE_NAME}.json`
+    `https://raw.githubusercontent.com/1023sherry/dongtan/main/src/data/${FilE_NAME}.json`
     );
   // const data = res.then((r) => r.data);
   return res.data;
@@ -22,30 +22,29 @@ const App = () => {
   const [isloaded, setIsLoaded] = useState(false);
 
   const getData = useCallback(async () => {
-    const TRIP = await Promise.all([
-      fetchData("bus_0to9"),
-      fetchData("bus_9to12"),
-      fetchData("bus_12to18"),
-      fetchData("bus_18to24"),
-      fetchData("bus_24to"),
-      fetchData("trail"),
-    ]);
+    // const TRIP = await Promise.all([
+    //   fetchData("bus_0to9"),
+    //   fetchData("bus_9to12"),
+    //   fetchData("bus_12to18"),
+    //   fetchData("bus_18to24"),
+    //   fetchData("bus_24to"),
+    //   fetchData("trail"),
+    // ]);
     const ICON = await Promise.all([
       fetchData("icon"),
-      fetchData("trail_icon"),
     ]);
 
-    const LINE = await Promise.all([
-      fetchData("line"),
-      fetchData("trail_line"),
-    ]);
+    // const LINE = await Promise.all([
+    //   fetchData("line"),
+    //   fetchData("trail_line"),
+    // ]);
 
     // const TRAIL = await fetchData("trail");
 
 
-    setTrip((prev) => TRIP.flat()); 
+    // setTrip((prev) => TRIP.flat()); 
     setIcon((prev) => ICON.flat());
-    setLine((prev) => LINE.flat());
+    // setLine((prev) => LINE.flat());
     setIsLoaded(true);
   }, []);
 
@@ -58,9 +57,9 @@ const App = () => {
       {!isloaded && <Splash />}
       {isloaded && (
         <Trip 
-              trip={trip}
+              // trip={trip}
               icon={icon}
-              line={line}
+              // line={line}
               />
       )}
     </div>
